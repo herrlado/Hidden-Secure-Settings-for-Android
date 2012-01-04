@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class HiddenSecureSettingActivity extends Activity implements OnClickListener {
 
@@ -66,6 +67,7 @@ public class HiddenSecureSettingActivity extends Activity implements OnClickList
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.ok){
 			persistInput();
+			Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
 		}
 	}
     
