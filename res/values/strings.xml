@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="wifi_idle_timeout_text">wifi_idle_ms - The interval in milliseconds after which Wi-Fi is considered idle.
+         When idle, it is possible for the device to be switched from Wi-Fi to
+         the mobile data network.</string>
+    <string name="app_name">Hidden Secure Settings</string>
+    <string name="save">Save</string>
+</resources>
