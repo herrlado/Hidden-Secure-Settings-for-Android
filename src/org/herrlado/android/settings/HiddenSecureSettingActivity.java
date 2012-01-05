@@ -1,13 +1,10 @@
 package org.herrlado.android.settings;
 
-import android.Manifest.permission;
 import android.app.Activity;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.renderscript.Program.TextureType;
-import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -57,17 +54,23 @@ public class HiddenSecureSettingActivity extends Activity implements OnClickList
 
     
     private void persistInput(){
-    	String value = wifi_idle_ms.getText().toString();
-		if(TextUtils.isEmpty(value)){
-			Settings.Secure.putLong(getContentResolver(), WIFI_IDLE_MS, DEFAULT_IDLE_MS);
-		}
+    	Long value;
+    	try {
+    		value = Long.valueOf( wifi_idle_ms.getText().toString());
+    	} catch(Exception ex){
+    		value  = DEFAULT_IDLE_MS;
+    		Log.w(TAG, ex);
+    	}
+    	Settings.Secure.putLong(getContentResolver(), WIFI_IDLE_MS, value);
     }
     
 	@Override
 	public void onClick(View arg0) {
 		if(arg0.getId() == R.id.ok){
 			persistInput();
-			Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT).show();
+			Toast toast = Toast.makeText(this, R.string.done, Toast.LENGTH_SHORT);
+			toast.setGravity(Gravity.CENTER, 0,0);
+			toast.show();
 		}
 	}
     
